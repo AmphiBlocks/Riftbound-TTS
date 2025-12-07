@@ -4,8 +4,8 @@ import os
 from pathlib import Path
 
 # Folder with your .webp files from the previous step
-webp_folder = Path("sfd3_webp")
-jpg_folder   = Path("sfd3_jpg")
+webp_folder = Path("new_webp")
+jpg_folder   = Path("new_jpg")
 jpg_folder.mkdir(exist_ok=True)
 
 print(f"Converting {len(list(webp_folder.glob('*.webp')))} cards → {jpg_folder}\n")

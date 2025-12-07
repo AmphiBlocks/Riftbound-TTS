@@ -14,7 +14,7 @@ cloudinary.config(
     secure     = True
 )
 
-jpg_folder = Path("sfd3_jpg")       # ← folder with your JPGs
+jpg_folder = Path("new_jpg")       # ← folder with your JPGs
 mapping_file = Path("cloudinary_mapping.json")
 lua_snippet  = Path("cloudinary_lua_images.lua")
 
