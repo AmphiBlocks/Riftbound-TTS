@@ -1,0 +1,657 @@
+name,type,supertype,domain,tags
+Sun Disc,Gear,,Fury,
+Stalwart Poro,Unit,,Calm,Poro
+Stand United,Spell,,Calm,
+Startipped Peak,Battlefield,,Colorless,
+Stealthy Pursuer,Unit,,Chaos,Shurima
+Stellacorn Herder,Unit,,Calm,Mount Targon
+Sterak's Gage,Gear,,Calm,Equipment
+Stormbringer,Spell,Signature,Fury || Body,Volibear
+Stormclaw Ursine,Unit,,Body,Freljord
+Strike Down,Spell,,Body,
+Stupefy,Spell,,Mind,
+Stacked Deck,Spell,,Chaos,
+Sunlit Guardian,Unit,,Calm,Shurima
+Super Mega Death Rocket!,Spell,Signature,Fury || Chaos,Jinx
+Svellsongur,Gear,,Calm,Equipment
+Swift Scout,Legend,,Mind || Chaos,Teemo
+Swift Scout,Legend,,Mind || Chaos,Teemo
+Swift Scout,Legend,,Mind || Chaos,Teemo
+Switcheroo,Spell,,Chaos,
+Symbol of the Solari,Gear,,Order,
+Targon's Peak,Battlefield,,Colorless,
+"Sona, Harmonious",Unit,Champion,Calm,Sona || Demacia
+"Sivir, Mercenary",Unit,Champion,Chaos,Sivir || Shurima
+"Sivir, Mercenary",Unit,Champion,Chaos,Sivir || Shurima
+Sky Splitter,Spell,,Fury,
+Smoke Screen,Spell,,Mind,
+Sneaky Deckhand,Unit,,Chaos,Pirate || Bilgewater
+Soaring Scout,Unit,,Order,Bird || Freljord
+Solari Chief,Unit,,Order,Mount Targon
+Solari Shieldbearer,Unit,,Calm,Mount Targon
+Solari Shrine,Gear,,Calm,
+"Taric, Protector",Unit,Champion,Calm,Taric || Mount Targon
+"Soraka, Wanderer",Unit,Champion,Order,Soraka || Mount Targon
+Soulgorger,Unit,,Chaos,Spirit || Shadow Isles
+Spectral Matron,Unit,,Order,Spirit || Shadow Isles
+Spinning Axe,Gear,Signature,Fury || Chaos,Draven || Equipment
+Spirit's Refuge,Gear,,Calm,
+Spoils of War,Spell,,Body,
+Sprite,Unit,Token,Colorless,Fae
+Sprite Call,Spell,,Mind,
+Sprite Mother,Unit,,Mind,Fae
+"Tryndamere, Barbarian",Unit,Champion,Fury,Tryndamere || Freljord
+Tideturner,Unit,,Chaos,Bilgewater
+Time Warp,Spell,,Mind,
+Traveling Merchant,Unit,,Chaos,Bilgewater
+Treasure Hoard,Battlefield,,Colorless,
+Treasure Hunter,Unit,,Chaos,Shurima
+Treasure Trove,Gear,,Chaos,
+Trifarian Gloryseeker,Unit,,Order,Trifarian || Noxus
+Trifarian War Camp,Battlefield,,Colorless,
+Trinity Force,Gear,,Body,Equipment
+Trove Golem,Unit,,Order,Freljord
+Tibbers,Unit,Signature,Fury || Chaos,Annie
+"Twisted Fate, Gambler",Unit,Champion,Chaos,Twisted Fate || Bilgewater
+"Udyr, Wildman",Unit,Champion,Body,Udyr || Freljord
+Unchecked Power,Spell,,Mind,
+Undercover Agent,Unit,,Chaos,
+Undertitan,Unit,,Order,The Void
+Unforgiven,Legend,,Calm || Chaos,Yasuo
+Unforgiven,Legend,,Calm || Chaos,Yasuo
+Unforgiven,Legend,,Calm || Chaos,Yasuo
+Unlicensed Armory,Gear,,Fury,
+The Candlelit Sanctum,Battlefield,,Colorless,
+Tasty Faefolk,Unit,,Calm,Fae || Bandle City
+"Teemo, Scout",Unit,Champion,Chaos,Yordle || Teemo || Bandle City
+"Teemo, Scout",Unit,Champion,Chaos,Yordle || Teemo || Bandle City
+"Teemo, Strategist",Unit,Champion,Mind,Yordle || Teemo || Bandle City
+"Teemo, Strategist",Unit,Champion,Mind,Yordle || Teemo || Bandle City
+The Arena's Greatest,Battlefield,,Colorless,
+The Boss,Legend,,Body || Order,Sett
+The Boss,Legend,,Body || Order,Sett
+The Boss,Legend,,Body || Order,Sett
+"Sivir, Ambitious",Unit,Champion,Body,Sivir || Shurima
+The Dreaming Tree,Battlefield,,Colorless,
+The Grand Plaza,Battlefield,,Colorless,
+The Harrowing,Spell,,Chaos,
+The Syren,Gear,,Chaos,
+The Zero Drive,Gear,,Mind,Equipment
+Thermo Beam,Spell,,Fury,
+Thousand-Tailed Watcher,Unit,,Mind,Ionia
+Thwonk!,Spell,,Calm,
+Tianna Crownguard,Unit,,Calm,Elite || Demacia
+Reinforce,Spell,,Calm,
+Ravenbloom Conservatory,Battlefield,,Colorless,
+Ravenbloom Student,Unit,,Mind,Noxus
+Ravenborn Tome,Gear,,Fury,
+Reaver's Row,Battlefield,,Colorless,
+Rebuke,Spell,,Chaos,
+Reckoner's Arena,Battlefield,,Colorless,
+Recruit (DE),Unit,Token,Colorless,Recruit
+Recruit (NX),Unit,Token,Colorless,Recruit
+Recruit (ZN),Unit,Token,Colorless,Recruit
+Recruit the Vanguard,Spell,,Order,
+Raging Soul,Unit,,Fury,Spirit || Shadow Isles
+"Rek'Sai, Breacher",Unit,Champion,Fury,Rek'Sai || The Void
+"Rek'Sai, Breacher",Unit,Champion,Fury,Rek'Sai || The Void
+"Rek'Sai, Swarm Queen",Unit,Champion,Order,Rek'Sai || The Void
+"Rek'Sai, Swarm Queen",Unit,Champion,Order,Rek'Sai || The Void
+Relentless Pursuit,Spell,Signature,Fury || Body,Lucian
+Relentless Storm,Legend,,Fury || Body,Volibear
+Relentless Storm,Legend,,Fury || Body,Volibear
+Relentless Storm,Legend,,Fury || Body,Volibear
+"Rell, Magnetic",Unit,Champion,Fury,Rell || Noxus
+Progress Day,Spell,,Mind,
+Portal Rescue,Spell,,Mind,
+Possession,Spell,,Chaos,
+Pouty Poro,Unit,,Fury,Poro
+Power Nexus,Battlefield,,Colorless,
+Premonition,Spell,,Mind,
+Primal Strength,Spell,,Body,
+Prize of Progress,Unit,,Mind,Mech || Piltover
+Prodigal Explorer,Legend,,Mind || Chaos,Ezreal
+Production Surge,Spell,,Mind,
+"Renata Glasc, Industrialist",Unit,Champion,Order,Renata Glasc || Zaun
+Promising Future,Spell,,Mind,
+Punch First,Spell,,Body,
+Purifier,Legend,,Fury || Body,Lucian
+Purifier,Legend,,Fury || Body,Lucian
+"Qiyana, Victorious",Unit,Champion,Body,Qiyana || Ixtal
+Radiant Dawn,Legend,,Calm || Order,Leona
+Radiant Dawn,Legend,,Calm || Order,Leona
+Radiant Dawn,Legend,,Calm || Order,Leona
+Raging Firebrand,Unit,,Fury,Dragon || Mount Targon
+"Sett, Kingpin",Unit,Champion,Order,Sett || Ionia
+Seal of Discord,Gear,,Chaos,
+Seal of Focus,Gear,,Calm,
+Seal of Focus,Gear,,Calm,
+Seal of Insight,Gear,,Mind,
+Seal of Rage,Gear,,Fury,
+Seal of Strength,Gear,,Body,
+Seal of Strength,Gear,,Body,
+Seal of Unity,Gear,,Order,
+"Sett, Brawler",Unit,Champion,Body,Sett || Ionia
+"Sett, Brawler",Unit,Champion,Body,Sett
+Seal of Discord,Gear,,Chaos,
+"Sett, Kingpin",Unit,Champion,Order,Sett || Ionia
+Shakedown,Spell,,Fury,
+"Shen, Kinkou",Unit,Champion,Order,Shen || Ionia
+Shipyard Skulker,Unit,,Chaos,Pirate || Bilgewater
+Showstopper,Spell,Signature,Body || Order,Sett
+Sigil of the Storm,Battlefield,,Colorless,
+Singularity,Spell,,Mind,
+Siphon Power,Spell,Signature,Mind || Order,Viktor
+"Sivir, Ambitious",Unit,Champion,Body,Sivir || Shurima
+Ruin Runner,Unit,,Body,Shurima
+"Renata Glasc, Industrialist",Unit,Champion,Order,Renata Glasc || Zaun
+"Rengar, Pouncing",Unit,Champion,Fury,Cat || Rengar || Ixtal
+Retreat,Spell,,Mind,
+Rhasa the Sunderer,Unit,,Chaos,Spirit || Shadow Isles
+Ride the Wind,Spell,,Chaos,
+Riptide Rex,Unit,,Mind,Pirate || Bilgewater
+Rocket Barrage,Spell,,Mind,
+Royal Entourage,Unit,,Calm,Shurima
+Royal Guard,Unit,,Order,Shurima
+Unsung Hero,Unit,,Order,Elite || Demacia
+"Rumble, Scrapper",Unit,Champion,Mind,Mech || Yordle || Rumble || Bandle City
+"Rumble, Scrapper",Unit,Champion,Mind,Mech || Yordle || Rumble || Bandle City
+Rune Prison,Spell,,Calm,
+Sabotage,Spell,,Body,
+Sacred Shears,Gear,,Order,Equipment
+Sai Scout,Unit,,Chaos,Shurima
+Salvage,Spell,,Order,
+Scrapheap,Gear,,Chaos,
+Scrapyard Champion,Unit,,Fury,Mech || Bandle City
+Hostile Takeover,Spell,Signature,Mind || Order,Renata Glasc
+Forgefire Cape,Gear,Signature,Calm || Mind,Ornn || Equipment
+Forgotten Monument,Battlefield,,Colorless,
+Frigid Touch,Spell,,Mind,
+Gearhead,Unit,,Mind,Zaun
+Grandmaster at Arms,Legend,,Calm || Body,Jax
+Guards!,Spell,,Order,
+Hall of Legends,Battlefield,,Colorless,
+Harpoon Squad,Unit,,Chaos,Pirate || Bilgewater
+Heart of Dark Ice,Gear,,Calm,
+Hexdrinker,Gear,,Body,Equipment
+Forge of the Fluft,Battlefield,,Colorless,
+Laurent Bladekeeper,Unit,,Body,Demacia
+Laurent Duelist,Unit,,Order,Demacia
+Marai Spire,Battlefield,,Colorless,
+Master Bingwen,Unit,,Chaos,Ionia
+Minefield,Battlefield,,Colorless,
+Minotaur Reckoner,Unit,,Fury,Noxus
+Navori Scout,Unit,,Calm,Yordle || Ionia
+On the Hunt,Spell,Signature,Body || Chaos,Sivir
+Perched Grimwyrm,Unit,,Fury,Dragon || Shadow Isles
+Emperor's Dais,Battlefield,,Colorless,
+Cull,Gear,,Chaos,Equipment
+Deathgrip,Spell,,Order,
+Desert's Call,Spell,,Calm,
+Detonate,Spell,,Fury,
+Direwing,Unit,,Body,Dragon || Demacia
+Dropboarder,Unit,,Mind,Zaun
+Eager Drakehound,Unit,,Fury,Dog || Dragon || Noxus
+Eminent Benefactor,Unit,,Order,Piltover
+Emperor of the Sands,Legend,,Calm || Order,Azir
+Petricite Monument,Gear,,Body,
+Emperor's Divide,Spell,,Calm,
+Eye of the Herald,Gear,,Order,Equipment
+"Ezreal, Prodigy",Unit,Champion,Chaos,Ezreal || Piltover
+"Ezreal, Prodigy",Unit,Champion,Chaos,Ezreal || Piltover
+Factory Recall,Spell,,Chaos,
+Fae Dragon,Unit,,Body,Fae || Dragon || Bandle City
+Fae Porter,Unit,,Chaos,Fae || Ionia
+Feral Strength,Spell,,Calm,
+Forecaster,Unit,,Mind,Mech || Yordle || Bandle City
+Spirit Wheel,Gear,,Chaos,
+Sentinel Adept,Unit,,Fury,Shadow Isles || Sentinel
+Serrated Dirk,Gear,,Fury,Equipment
+"Sett, Brawler",Unit,Champion,Body,Sett || Ionia
+"Sett, Brawler",Unit,Champion,Body,Sett
+Show of Strength,Spell,,Body,
+Shurelya's Requiem,Gear,Signature,Calm || Mind,Ornn || Equipment
+Simian Ancestor,Unit,,Calm,Ionia
+Skyfall of Areion,Gear,,Fury,Equipment
+"Soraka, Wanderer",Unit,Champion,Order,Soraka || Mount Targon
+"Soraka, Wanderer",Unit,Champion,Order,Soraka || Mount Targon
+Seat of Power,Battlefield,,Colorless,
+Sudden Storm,Spell,,Fury,
+Sunken Temple,Battlefield,,Colorless,
+Temporal Portal,Gear,,Mind,
+Temptation,Spell,,Chaos,
+The Papertree,Battlefield,,Colorless,
+Trusty Ramhound,Unit,,Order,Dog || Elite || Demacia
+Veiled Temple,Battlefield,,Colorless,
+Wages of Pain,Spell,,Mind,
+Zaun Punk,Unit,,Order,Zaun
+Ribbon Dancer,Unit,,Calm,Ionia
+Pickpocket,Unit,,Mind,Zaun
+Plundering Poro,Unit,,Mind,Poro || Pirate || Bilgewater
+Poro Snax,Gear,,Calm,
+Prodigal Explorer,Legend,,Mind || Chaos,Ezreal
+Rabadon's Deathcrown,Gear,Signature,Calm || Mind,Ornn || Equipment
+Rally the Troops,Spell,,Order,
+Recurve Bow,Gear,,Fury,Equipment
+"Renata Glasc, Mastermind",Unit,Champion,Mind,Renata Glasc || Zaun
+"Renata Glasc, Mastermind",Unit,Champion,Mind,Renata Glasc || Zaun
+Counter Strike,Spell,Signature,Calm || Body,Jax
+Riposte,Spell,Signature,Body || Order,Fiora
+Rockfall Path,Battlefield,,Colorless,
+"Rumble, Hotheaded",Unit,Champion,Fury,Mech || Yordle || Rumble || Bandle City
+"Rumble, Hotheaded",Unit,Champion,Fury,Mech || Yordle || Rumble || Bandle City
+Sandshifter,Unit,,Order,Shurima
+Sea Monkey,Unit,,Body,Pirate || Bilgewater
+Seal of Insight,Gear,,Mind,
+Seal of Rage,Gear,,Fury,
+Seal of Unity,Gear,,Order,
+Warmog's Armor,Gear,,Body,Equipment
+Void Drone,Unit,,Fury,The Void
+Void Gate,Battlefield,,Colorless,
+Void Hatchling,Unit,,Fury,The Void
+Void Rush,Spell,Signature,Fury || Order,Rek'Sai
+Void Seeker,Spell,,Fury,
+"Volibear, Furious",Unit,Champion,Fury,Volibear || Freljord
+"Volibear, Furious",Unit,Champion,Fury,Volibear || Freljord
+"Volibear, Imposing",Unit,Champion,Body,Volibear || Freljord
+"Volibear, Imposing",Unit,Champion,Body,Volibear || Freljord
+Wallop,Spell,,Body,
+Void Burrower,Legend,,Fury || Order,Rek'Sai
+"Warwick, Hunter",Unit,Champion,Body,Dog || Warwick || Zaun
+Watchful Sentry,Unit,,Mind,Freljord
+Whirlwind,Spell,,Chaos,
+Whiteflame Protector,Unit,,Calm,Dragon || Mount Targon
+Wielder of Water,Unit,,Calm,Ionia
+Wildclaw Shaman,Unit,,Body,Freljord
+Wind Wall,Spell,,Calm,
+Windsinger,Unit,,Chaos,Ionia
+Windswept Hillock,Battlefield,,Colorless,
+Vengeance,Spell,,Order,
+Unyielding Spirit,Spell,,Body,
+Vanguard Armory,Gear,,Order,
+Vanguard Attendant,Unit,,Order,Elite || Demacia
+Vanguard Captain,Unit,,Order,Elite || Demacia
+Vanguard Helm,Gear,,Order,
+Vanguard Sergeant,Unit,,Order,Elite || Demacia
+"Vayne, Hunter",Unit,Champion,Fury,Vayne || Demacia || Sentinel
+"Vayne, Hunter",Unit,Champion,Fury,Vayne || Demacia || Sentinel
+"Vayne, Hunter",Unit,Champion,Fury,Vayne || Demacia
+Wizened Elder,Unit,,Calm,Ionia
+Veteran Poro,Unit,,Body,Poro || Freljord
+"Vex, Cheerless",Unit,Champion,Chaos,Yordle || Vex || Shadow Isles
+"Vi, Destructive",Unit,Champion,Fury,Vi || Piltover
+"Viktor, Innovator",Unit,Champion,Mind,Viktor || Zaun
+"Viktor, Innovator",Unit,Champion,Mind,Viktor || Zaun
+"Viktor, Leader",Unit,Champion,Order,Viktor || Zaun
+"Viktor, Leader",Unit,Champion,Order,Viktor || Zaun
+Vilemaw's Lair,Battlefield,,Colorless,
+Void Burrower,Legend,,Fury || Order,Rek'Sai
+Beast Below,Unit,,Chaos,Bilgewater
+Ancient Warmonger,Unit,,Chaos,Spirit || Noxus
+Angle Shot,Spell,,Fury,
+"Aphelios, Exalted",Unit,Champion,Calm,Aphelios || Mount Targon
+"Aphelios, Exalted",Unit,Champion,Calm,Aphelios || Mount Targon
+Arcane Shift,Spell,Signature,Mind || Chaos,Ezreal
+Arise!,Spell,Signature,Calm || Order,Azir
+Armed Assailant,Unit,,Fury,Noxus
+Assembly Rig,Gear,,Fury,
+Battering Ram,Unit,,Fury,Trifarian || Noxus
+Battle Mistress,Legend,,Body || Chaos,Sivir
+"Akshan, Mischievous",Unit,Champion,Body,Akshan || Shurima || Sentinel
+Black Market Broker,Unit,,Chaos,Zaun
+Blast Corps Cadet,Unit,,Fury,Piltover
+Blood Money,Spell,,Order,
+Blood Rush,Spell,,Fury,
+Bushwhack,Spell,,Fury,
+Chem-Baroness,Legend,,Mind || Order,Renata Glasc
+Cloth Armor,Gear,,Mind,Equipment
+Combat Chef,Unit,,Body,Demacia
+Corrupt Enforcer,Unit,,Chaos,Piltover
+"Yi, Meditative",Unit,Champion,Calm,Master Yi || Ionia
+World Atlas,Gear,,Mind,Equipment
+Wraith of Echoes,Unit,,Mind,Spirit || Shadow Isles
+Wuju Bladesman - Starter,Legend,Champion,Calm || Body,Master Yi
+"Xin Zhao, Vigilant",Unit,Champion,Order,Demacia || Xin Zhao
+"Yasuo, Remorseful",Unit,Champion,Calm,Yasuo || Ionia
+"Yasuo, Remorseful",Unit,Champion,Calm,Yasuo || Ionia
+"Yasuo, Windrider",Unit,Champion,Chaos,Yasuo || Ionia
+"Yasuo, Windrider",Unit,Champion,Chaos,Yasuo || Ionia
+"Yi, Honed",Unit,Champion,Body,Master Yi || Ionia
+Poro Herder,Unit,,Calm,Freljord
+"Yone, Blademaster",Unit,Champion,Body,Yone || Ionia || Demon
+"Yone, Blademaster",Unit,Champion,Body,Yone || Ionia || Demon
+"Yone, Blademaster",Unit,Champion,Body,Yone || Ionia || Demon
+Yordle Explorer,Unit,,Body,Yordle || Bandle City
+Zaun Warrens,Battlefield,,Colorless,
+Zaunite Bouncer,Unit,,Chaos,Zaun
+Zenith Blade,Spell,Signature,Calm || Order,Leona
+Zephyr Sage,Unit,,Calm,Ionia || Bird
+Zhonya's Hourglass,Gear,,Calm,
+Divine Judgment,Spell,,Order,
+Daughter of the Void,Legend,,Fury || Mind,Kai'Sa
+Dauntless Vanguard,Unit,,Body,Elite || Demacia
+Dazzling Aurora,Gear,,Body,
+Deadbloom Predator,Unit,,Body,Shadow Isles
+Decisive Strike,Spell,Signature,Body || Order,Garen
+Defiant Dance,Spell,Signature,Calm || Chaos,Irelia
+Defy,Spell,,Calm,
+Disarming Rake,Unit,,Calm,Demacia
+Discipline,Spell,,Calm,
+Disintegrate,Spell,,Fury,
+Daughter of the Void,Legend,,Fury || Mind,Kai'Sa
+Doran's Blade,Gear,,Body,Equipment
+Doran's Ring,Gear,,Chaos,Equipment
+Doran's Shield,Gear,,Calm,Equipment
+Downwell,Spell,,Chaos,
+"Dr. Mundo, Expert",Unit,Champion,Mind,Dr. Mundo || Zaun
+Drag Under,Spell,,Order,
+Dragon's Rage,Spell,Signature,Calm || Body,Lee Sin
+"Draven, Audacious",Unit,Champion,Chaos,Draven || Noxus
+"Draven, Audacious",Unit,Champion,Chaos,Draven || Noxus
+Dangerous Duo,Unit,,Fury,Mech || Bandle City
+Commander Ledros,Unit,,Order,Spirit || Shadow Isles
+Confront,Spell,,Body,
+Consult the Past,Spell,,Mind,
+Convergent Mutation,Spell,,Mind,
+Corina Veraza,Unit,,Order,Zaun
+Crackshot Corsair,Unit,,Body,Pirate || Bilgewater
+Cruel Patron,Unit,,Order,Noxus
+Cull the Weak,Spell,,Order,
+Danger Zone,Spell,Signature,Fury || Mind,Rumble
+"Draven, Showboat",Unit,Champion,Fury,Draven || Noxus
+Daring Poro,Unit,,Order,Poro
+"Darius, Executioner",Unit,Champion,Order,Trifarian || Darius || Noxus
+"Darius, Executioner",Unit,Champion,Order,Trifarian || Darius
+"Darius, Executioner",Unit,Champion,Order,Trifarian || Darius || Noxus
+"Darius, Executioner",Unit,Champion,Order,Trifarian || Darius
+"Darius, Trifarian",Unit,Champion,Fury,Trifarian || Darius || Noxus
+"Darius, Trifarian",Unit,Champion,Fury,Trifarian || Darius || Noxus
+Dark Child - Starter,Legend,Champion,Fury || Chaos,Annie
+Daughter of the Void,Legend,,Fury || Mind,Kai'Sa
+Fire Below the Mountain,Legend,,Calm || Mind,Ornn
+Ferrous Forerunner,Unit,,Fury,Mech || Yordle || Bandle City
+Fight or Flight,Spell,,Chaos,
+Final Spark,Spell,Signature,Mind || Order,Lux
+Find Your Center,Spell,,Calm,
+"Fiora, Peerless",Unit,Champion,Body,Fiora || Demacia
+"Fiora, Peerless",Unit,Champion,Body,Fiora || Demacia
+"Fiora, Victorious",Unit,Champion,Order,Fiora || Demacia
+"Fiora, Worthy",Unit,Champion,Order,Fiora || Demacia
+"Fiora, Worthy",Unit,Champion,Order,Fiora || Demacia
+Fire Below the Mountain,Legend,,Calm || Mind,Ornn
+Falling Star,Spell,,Fury,
+Firestorm,Spell,,Fury,
+First Mate,Unit,,Body,Pirate || Bilgewater
+"Fizz, Trickster",Unit,Champion,Chaos,Yordle || Fizz || Bilgewater
+Flame Chompers,Unit,,Fury,Zaun
+Flash,Spell,,Chaos,
+Flurry of Blades,Spell,,Body,
+Forge of the Future,Gear,,Order,
+Fortified Position,Battlefield,,Colorless,
+Fox-Fire,Spell,Signature,Calm || Mind,Ahri
+Emperor of the Sands,Legend,,Calm || Order,Azir
+"Draven, Vanquisher",Unit,Champion,Fury,Draven || Noxus
+"Draven, Vanquisher",Unit,Champion,Fury,Draven || Noxus
+Dune Drake,Unit,,Body,Dragon || Shurima
+Dunebreaker,Unit,,Fury,The Void
+Eager Apprentice,Unit,,Mind,Piltover
+Eclipse Herald,Unit,,Calm,Bird || Mount Targon
+Edge of Night,Gear,,Chaos,Equipment
+"Ekko, Recurrent",Unit,Champion,Mind,Ekko || Zaun
+Ember Monk,Unit,,Chaos,Bandle City
+Clockwork Keeper,Unit,,Calm,Shurima
+En Garde,Spell,,Calm,
+Energy Conduit,Gear,,Mind,
+Experimental Hexplate,Gear,,Mind,Equipment
+"Ezreal, Dashing",Unit,Champion,Mind,Ezreal || Piltover
+"Ezreal, Dashing",Unit,Champion,Mind,Ezreal || Piltover
+Facebreaker,Spell,,Order,
+Fading Memories,Spell,,Chaos,
+Faithful Manufactor,Unit,,Order,Piltover
+Falling Comet,Spell,,Mind,
+"Bard, Mercurial",Unit,Champion,Mind,Bard
+Ava Achiever,Unit,,Mind,Yordle
+"Azir, Ascendant",Unit,Champion,Calm,Bird || Azir || Shurima
+"Azir, Ascendant",Unit,Champion,Calm,Bird || Azir || Shurima
+"Azir, Sovereign",Unit,Champion,Order,Bird || Azir || Shurima
+"Azir, Sovereign",Unit,Champion,Order,Bird || Azir || Shurima
+B.F. Sword,Gear,,Order,Equipment
+Back to Back,Spell,,Order,
+Back-Alley Bar,Battlefield,,Colorless,
+Baited Hook,Gear,,Order,
+Bandle Tree,Battlefield,,Colorless,
+Aspiring Engineer,Unit,,Mind,Piltover
+Battle Mistress,Legend,,Body || Chaos,Sivir
+Bellows Breath,Spell,,Mind,
+Bilgewater Bully,Unit,,Body,Bilgewater
+Blade Dancer,Legend,,Calm || Chaos,Irelia
+Blade Dancer,Legend,,Calm || Chaos,Irelia
+Blade of the Ruined King,Gear,,Order,Equipment
+Blast of Power,Spell,,Order,
+Blastcone Fae,Unit,,Mind,Fae || Bandle City
+Blazing Scorcher,Unit,,Fury,Dragon || Noxus
+Altar of Memories,Gear,,Order,
+Adaptatron,Unit,,Calm,Mech || Piltover
+Against the Odds,Spell,,Fury,
+"Ahri, Alluring",Unit,Champion,Calm,Ahri || Ionia
+"Ahri, Alluring",Unit,Champion,Calm,Ahri || Ionia
+"Ahri, Inquisitive",Unit,Champion,Mind,Ahri || Ionia
+"Ahri, Inquisitive",Unit,Champion,Mind,Ahri
+"Ahri, Inquisitive",Unit,Champion,Mind,Ahri
+"Ahri, Inquisitive",Unit,Champion,Mind,Ahri || Ionia
+Albus Ferros,Unit,,Order,Piltover
+Blind Fury,Spell,,Fury,
+Altar to Unity,Battlefield,,Colorless,
+Ancient Henge,Gear,,Body,
+"Anivia, Primal",Unit,Champion,Body,Bird || Anivia || Freljord
+"Annie, Fiery",Unit,Champion,Fury,Annie || Noxus
+"Annie, Stubborn",Unit,Champion,Chaos,Annie || Noxus
+"Aphelios, Exalted",Unit,Champion,Calm,Aphelios || Mount Targon
+Apprentice Smith,Unit,,Calm,Freljord
+Arena Bar,Gear,,Body,
+Aspirant's Climb,Battlefield,,Colorless,
+Cemetery Attendant,Unit,,Chaos,Dog || Shadow Isles
+"Caitlyn, Patrolling",Unit,Champion,Calm,Caitlyn || Piltover
+Call to Glory,Spell,,Order,
+Called Shot,Spell,,Chaos,
+Calm Rune,Rune,Basic,Calm,
+Calm Rune,Rune,Basic,Calm,
+Cannon Barrage,Spell,,Body,
+Captain Farron,Unit,,Fury,Trifarian || Noxus
+Card Sharp,Unit,,Mind,Bilgewater
+Carnivorous Snapvine,Unit,,Body,Shadow Isles
+Catalyst of Aeons,Spell,,Body,
+Bullet Time,Spell,Signature,Body || Chaos,Miss Fortune
+Challenge,Spell,,Body,
+Chaos Rune,Rune,Basic,Chaos,
+Chaos Rune,Rune,Basic,Chaos,
+Charm,Spell,,Calm,
+Chem-Baroness,Legend,,Mind || Order,Renata Glasc
+Chemtech Cask,Gear,,Mind,
+Chemtech Enforcer,Unit,,Fury,Zaun
+Cithria of Cloudfield,Unit,,Body,Elite || Demacia
+Cleave,Spell,,Fury,
+Boots of Swiftness,Gear,,Chaos,Equipment
+Blind Monk,Legend,,Calm || Body,Lee Sin
+Blind Monk,Legend,,Calm || Body,Lee Sin
+Blind Monk,Legend,,Calm || Body,Lee Sin
+"Blitzcrank, Impassive",Unit,Champion,Calm,Mech || Blitzcrank || Zaun
+Block,Spell,,Calm,
+Body Rune,Rune,Basic,Body,
+Body Rune,Rune,Basic,Body,
+Bonds of Strength,Spell,,Order,
+Boneshiver,Gear,,Body,Equipment
+Frostcoat Cub,Unit,,Mind,Dog || Freljord
+Bounty Hunter,Legend,,Body || Chaos,Miss Fortune
+Bounty Hunter,Legend,,Body || Chaos,Miss Fortune
+Bounty Hunter,Legend,,Body || Chaos,Miss Fortune
+Brazen Buccaneer,Unit,,Fury,Pirate || Bilgewater
+Breakneck Mech,Unit,,Mind,Mech || Yordle || Bandle City
+Brutalizer,Gear,,Calm,Equipment
+Brynhir Thundersong,Unit,,Fury,Freljord
+Bubble Bot,Unit,,Mind,Mech || Yordle || Bandle City
+Buhru Captain,Unit,,Body,Bilgewater
+Mechanized Menace,Legend,,Fury || Mind,Rumble
+"Lux, Crownguard",Unit,Champion,Order,Lux || Demacia
+"Lux, Illuminated",Unit,Champion,Mind,Lux || Demacia
+Machine Evangel,Unit,,Order,Piltover
+Maddened Marauder,Unit,,Chaos,Pirate || Bilgewater
+Mageseeker Warden,Unit,,Calm,Demacia
+Magma Wurm,Unit,,Fury,Freljord
+"Malzahar, Fanatic",Unit,Champion,Mind,Malzahar || The Void
+Marching Orders,Spell,,Body,
+Mask of Foresight,Gear,,Calm,
+Mechanized Menace,Legend,,Fury || Mind,Rumble
+"Lucian, Merciless",Unit,Champion,Body,Lucian || Demacia || Sentinel
+Meditation,Spell,,Calm,
+Mega-Mech,Unit,,Mind,Mech || Bandle City
+Might of Demacia - Starter,Legend,Champion,Body || Order,Garen
+Mind Rune,Rune,Basic,Mind,
+Mind Rune,Rune,Basic,Mind,
+Mindsplitter,Unit,,Chaos,Dragon || Mount Targon
+"Miss Fortune, Buccaneer",Unit,Champion,Chaos,Pirate || Miss Fortune || Bilgewater
+"Miss Fortune, Buccaneer",Unit,Champion,Chaos,Pirate || Miss Fortune || Bilgewater
+"Miss Fortune, Captain",Unit,Champion,Body,Pirate || Miss Fortune || Bilgewater
+"Leona, Zealot",Unit,Champion,Calm,Leona || Mount Targon
+"Lee Sin, Ascetic",Unit,Champion,Calm,Lee Sin || Ionia
+"Lee Sin, Ascetic",Unit,Champion,Calm,Lee Sin || Ionia
+"Lee Sin, Centered",Unit,Champion,Body,Lee Sin || Ionia
+"Lee Sin, Centered",Unit,Champion,Body,Lee Sin || Ionia
+Legion Quartermaster,Unit,,Calm,Trifarian || Noxus
+Legion Rearguard,Unit,,Fury,Trifarian || Noxus
+"Leona, Determined",Unit,Champion,Order,Leona || Mount Targon
+"Leona, Determined",Unit,Champion,Order,Leona || Mount Targon
+"Leona, Zealot",Unit,Champion,Calm,Leona || Mount Targon
+"Miss Fortune, Captain",Unit,Champion,Body,Pirate || Miss Fortune || Bilgewater
+Lonely Poro,Unit,,Calm,Poro || Freljord
+Long Sword,Gear,,Fury,Equipment
+Loose Cannon,Legend,,Fury || Chaos,Jinx
+Loose Cannon,Legend,,Fury || Chaos,Jinx
+Loose Cannon,Legend,,Fury || Chaos,Jinx
+Loyal Pup,Unit,,Chaos,Dog || Bandle City
+"Lucian, Gunslinger",Unit,Champion,Fury,Lucian || Demacia || Sentinel
+"Lucian, Gunslinger",Unit,Champion,Fury,Lucian || Demacia || Sentinel
+"Lucian, Merciless",Unit,Champion,Body,Lucian || Demacia || Sentinel
+Pack of Wonders,Gear,,Chaos,
+Orb of Regret,Gear,,Mind,
+Order Rune,Rune,Basic,Order,
+Order Rune,Rune,Basic,Order,
+Ornn's Forge,Battlefield,,Colorless,
+"Ornn, Blacksmith",Unit,Champion,Calm,Ornn || Freljord
+"Ornn, Blacksmith",Unit,Champion,Calm,Ornn || Freljord
+"Ornn, Forge God",Unit,Champion,Mind,Ornn || Freljord
+"Ornn, Forge God",Unit,Champion,Mind,Ornn || Freljord
+Overt Operation,Spell,,Body,
+Overzealous Fan,Unit,,Chaos,Noxus
+Obelisk of Power,Battlefield,,Colorless,
+Pakaa Cub,Unit,,Body,Cat || Ixtal
+Party Favors,Spell,,Calm,
+Peak Guardian,Unit,,Order,Mount Targon
+Petty Officer,Unit,,Order,Pirate || Bilgewater
+Piercing Light,Spell,,Fury,
+Pirate's Haven,Gear,,Body,
+Pit Crew,Unit,,Mind,Bandle City
+Pit Rookie,Unit,,Body,Bilgewater
+Playful Phantom,Unit,,Calm,Spirit || Shadow Isles
+Needlessly Large Yordle,Unit,,Calm,Yordle || Bandle City
+Mistfall,Gear,,Body,
+Mobilize,Spell,,Body,
+Monastery of Hirana,Battlefield,,Colorless,
+Morbid Return,Spell,,Chaos,
+Mountain Drake,Unit,,Body,Dragon
+Mushroom Pouch,Gear,,Mind,
+Mystic Poro,Unit,,Chaos,Poro
+Mystic Reversal,Spell,,Calm,
+Navori Fighting Pit,Battlefield,,Colorless,
+Lecturing Yordle,Unit,,Mind,Yordle || Bandle City
+Nine-Tailed Fox,Legend,,Calm || Mind,Ahri
+Nine-Tailed Fox,Legend,,Calm || Mind,Ahri
+Nine-Tailed Fox,Legend,,Calm || Mind,Ahri
+"Nocturne, Horrifying",Unit,Champion,Chaos,Nocturne
+Not So Fast,Spell,,Calm,
+Noxian Drummer,Unit,,Order,Trifarian || Noxus
+Noxian Guillotine,Spell,Signature,Fury || Order,Darius
+Noxus Hopeful,Unit,,Fury,Trifarian || Noxus
+Noxus Saboteur,Unit,,Fury,Trifarian || Noxus
+Herald of the Arcane,Legend,,Mind || Order,Viktor
+Guerilla Warfare,Spell,Signature,Mind || Chaos,Teemo
+Gust,Spell,,Chaos,
+Hallowed Tomb,Battlefield,,Colorless,
+Hand of Noxus,Legend,,Fury || Order,Darius
+Hand of Noxus,Legend,,Fury || Order,Darius
+Hand of Noxus,Legend,,Fury || Order,Darius
+Hard Bargain,Spell,,Chaos,
+Harnessed Dragon,Unit,,Order,Dragon || Demacia
+"Heimerdinger, Inventor",Unit,Champion,Mind,Yordle || Heimerdinger || Piltover
+Herald of Scales,Unit,,Body,Mount Targon
+Guardian of the Passage,Unit,,Calm,Spirit || Shadow Isles
+Herald of the Arcane,Legend,,Mind || Order,Viktor
+Herald of the Arcane,Legend,,Mind || Order,Viktor
+Here to Help,Spell,,Body,
+Hextech Anomaly,Gear,,Mind,
+Hextech Ray,Spell,,Fury,
+Hidden Blade,Spell,,Order,
+Highlander,Spell,Signature,Calm || Body,Master Yi
+Honest Broker,Unit,,Order,Ionia
+Icathian Rain,Spell,Signature,Fury || Mind,Kai'Sa
+Glasc Mixologist,Unit,,Order,Zaun
+Fury Rune,Rune,Basic,Fury,
+Fury Rune,Rune,Basic,Fury,
+Garbage Grabber,Gear,,Mind,
+"Garen, Commander",Unit,Champion,Order,Elite || Garen || Demacia
+"Garen, Rugged",Unit,Champion,Body,Elite || Garen || Demacia
+Gem Jammer,Unit,,Fury,Mech || Bandle City
+Gemcraft Seer,Unit,,Mind,Mount Targon
+Gentlemen's Duel,Spell,,Body,
+Get Excited!,Spell,,Fury,
+Immortal Phoenix,Unit,,Fury,Spirit
+Glorious Executioner,Legend,,Fury || Chaos,Draven
+Glorious Executioner,Legend,,Fury || Chaos,Draven
+Gold,Gear,Token,Colorless,
+Grand Duelist,Legend,,Body || Order,Fiora
+Grand Duelist,Legend,,Body || Order,Fiora
+Grand Strategem,Spell,,Order,
+Grandmaster at Arms,Legend,,Calm || Body,Jax
+Grove of the God-Willow,Battlefield,,Colorless,
+Guardian Angel,Gear,,Calm,Equipment
+Kato the Arm,Unit,,Body,Noxus
+"Jinx, Demolitionist",Unit,Champion,Fury,Jinx || Zaun
+"Jinx, Rebel",Unit,Champion,Chaos,Jinx || Zaun
+"Jinx, Rebel",Unit,Champion,Chaos,Jinx || Zaun
+Kadregrin the Infernal,Unit,,Fury,Dragon || Demacia
+"Kai'Sa, Evolutionary",Unit,Champion,Mind,Kai'Sa || The Void
+"Kai'Sa, Evolutionary",Unit,Champion,Mind,Kai'Sa || The Void
+"Kai'Sa, Survivor",Unit,Champion,Fury,Kai'Sa || The Void
+"Kai'Sa, Survivor",Unit,Champion,Fury,Kai'Sa || The Void
+"Karma, Channeler",Unit,Champion,Order,Vi || Ionia
+"Karthus, Eternal",Unit,Champion,Order,Spirit || Karthus || Shadow Isles
+"Jinx, Demolitionist",Unit,Champion,Fury,Jinx || Zaun
+"Kayn, Unleashed",Unit,Champion,Chaos,Kayn || Ionia
+King's Edict,Spell,,Order,
+Kinkou Monk,Unit,,Body,Ionia
+"Kog'Maw, Caustic",Unit,Champion,Chaos,Kog'Maw || The Void
+Kraken Hunter,Unit,,Body,Pirate || Bilgewater
+Lady of Luminosity - Starter,Legend,Champion,Mind || Order,Lux
+Last Breath,Spell,Signature,Calm || Chaos,Yasuo
+Last Rites,Gear,,Chaos,Equipment
+Last Stand,Spell,,Calm,
+Iron Ballista,Gear,,Fury,
+Imperial Decree,Spell,,Order,
+Incinerate,Spell,,Fury,
+Invert Timelines,Spell,,Chaos,
+"Irelia, Fervent",Unit,Champion,Calm,Irelia || Ionia
+"Irelia, Fervent",Unit,Champion,Calm,Irelia || Ionia
+"Irelia, Fervent",Unit,Champion,Calm,Irelia || Ionia
+"Irelia, Fervent",Unit,Champion,Calm,Irelia || Ionia
+"Irelia, Graceful",Unit,Champion,Chaos,Irelia || Ionia
+"Irelia, Graceful",Unit,Champion,Chaos,Irelia || Ionia
+Acceptable Losses,Spell,,Chaos,
+Jae Medarda,Unit,,Chaos,Noxus
+"Janna, Savior",Unit,Champion,Calm,Janna || Zaun
+Jaull-Fish,Unit,,Body,Bilgewater
+"Jax, Unmatched",Unit,Champion,Calm,Jax || Icathia
+"Jax, Unmatched",Unit,Champion,Calm,Jax || Icathia
+"Jax, Unrelenting",Unit,Champion,Body,Jax || Icathia
+"Jax, Unrelenting",Unit,Champion,Body,Jax || Icathia
+"Jayce, Man of Progress",Unit,Champion,Mind,Jayce || Piltover
+Jeweled Colossus,Unit,,Mind,Mount Targon
