@@ -1,0 +1,44 @@
+o BoosterPack_Rect
+
+# Vertices - top face (Y = 0.08)
+v -0.692 0.080 -1.000
+v  0.692 0.080 -1.000
+v  0.692 0.080  1.000
+v -0.692 0.080  1.000
+
+# Vertices - bottom face (Y = 0.00)
+v -0.692 0.000 -1.000
+v  0.692 0.000 -1.000
+v  0.692 0.000  1.000
+v -0.692 0.000  1.000
+
+# UVs (simple planar, V flipped so top of texture = positive Z)
+vt 0.0 1.0
+vt 1.0 1.0
+vt 1.0 0.0
+vt 0.0 0.0
+
+# Top face (clockwise winding)
+f 1/1 4/4 3/3
+f 1/1 3/3 2/2
+
+# Bottom face (clockwise winding)
+f 5/1 6/2 7/3
+f 5/1 7/3 8/4
+
+# Side faces (clockwise when viewed from outside)
+# Front (+Z)
+f 4/4 8/4 7/3
+f 4/4 7/3 3/3
+
+# Back (-Z)
+f 1/1 2/2 6/2
+f 1/1 6/2 5/1
+
+# Right (+X)
+f 2/2 3/3 7/3
+f 2/2 7/3 6/2
+
+# Left (-X)
+f 5/1 8/4 4/4
+f 5/1 4/4 1/1
