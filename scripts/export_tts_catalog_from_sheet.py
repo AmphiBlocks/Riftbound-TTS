@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import argparse
+import json
+import re
 import sys
 import urllib.parse
 from pathlib import Path
@@ -13,7 +15,14 @@ from piltover_spoilers_to_sheet import SHEET_ID, api_json, read_sheet_token  # n
 
 
 TAB_NAME = "TTS Lua Script (Automatically Generated)"
-DEFAULT_OUTPUT = ROOT / "scripts" / "generated_riftbound_card_catalog.lua"
+DEFAULT_LUA_OUTPUT = ROOT / "scripts" / "generated_riftbound_card_catalog.lua"
+DEFAULT_JSON_OUTPUT = ROOT / "scripts" / "generated_riftbound_card_catalog.json"
+
+CARD_ENTRY_RE = re.compile(
+    r'^\["(?P<key>[^"]+)"\] = \{name="(?P<name>(?:\\.|[^"])*)", description="(?P<description>(?:\\.|[^"])*)"'
+    r'(?:, image = "(?P<image>(?:\\.|[^"])*)")?, gmNotes = \[\[(?P<gm>.*)\]\]\},?$'
+)
+MAP_ENTRY_RE = re.compile(r'^\["(?P<key>[^"]+)"\] = "(?P<value>[^"]+)",?$')
 
 
 def sanitize_lua_line(line):
@@ -33,13 +42,65 @@ def fetch_tab_lines(token):
     return lines
 
 
-def export_catalog(output_path):
+def lua_unescape(text):
+    return json.loads(f'"{text}"')
+
+
+def parse_lua_catalog(lines):
+    card_data = {}
+    tts_to_id_map = {}
+    section = None
+
+    for line in lines:
+        if line == "local cardData = {":
+            section = "cardData"
+            continue
+        if line == "local tts_to_id_map = {":
+            section = "tts_to_id_map"
+            continue
+        if line == "}":
+            section = None
+            continue
+        if section == "cardData":
+            match = CARD_ENTRY_RE.match(line)
+            if not match:
+                continue
+            image = match.group("image")
+            entry = {
+                "name": lua_unescape(match.group("name")),
+                "description": lua_unescape(match.group("description")),
+                "gmNotes": json.loads(match.group("gm")),
+            }
+            if image is not None:
+                entry["image"] = lua_unescape(image)
+            card_data[match.group("key")] = entry
+            continue
+        if section == "tts_to_id_map":
+            match = MAP_ENTRY_RE.match(line)
+            if not match:
+                continue
+            tts_to_id_map[match.group("key")] = match.group("value")
+
+    if not card_data:
+        raise RuntimeError("Failed to parse cardData from generated Lua tab")
+    return {
+        "cardData": card_data,
+        "tts_to_id_map": tts_to_id_map,
+    }
+
+
+def fetch_catalog_lines():
     token = read_sheet_token()
     lines = fetch_tab_lines(token)
     if not lines:
         raise RuntimeError(f"No Lua lines found in sheet tab: {TAB_NAME}")
+    return lines
+
+
+def export_lua(output_path, lines):
     output_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return {
+        "format": "lua",
         "output": output_path,
         "line_count": len(lines),
         "first_line": lines[0],
@@ -47,19 +108,56 @@ def export_catalog(output_path):
     }
 
 
+def export_json(output_path, lines):
+    payload = parse_lua_catalog(lines)
+    output_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return {
+        "format": "json",
+        "output": output_path,
+        "card_count": len(payload["cardData"]),
+        "tts_map_count": len(payload["tts_to_id_map"]),
+    }
+
+
 def main():
-    parser = argparse.ArgumentParser(description="Export generated Riftbound card catalog Lua from Sheets.")
+    parser = argparse.ArgumentParser(description="Export generated Riftbound card catalog from Sheets.")
     parser.add_argument(
         "--output",
-        default=str(DEFAULT_OUTPUT),
-        help=f"Output path (default: {DEFAULT_OUTPUT})",
+        help="Output path. Defaults depend on format.",
+    )
+    parser.add_argument(
+        "--format",
+        choices=("lua", "json", "both"),
+        default="lua",
+        help="Output format.",
     )
     args = parser.parse_args()
 
-    result = export_catalog(Path(args.output))
-    print(f"Wrote {result['line_count']} lines to {result['output']}")
-    print(f"First line: {result['first_line']}")
-    print(f"Last line: {result['last_line']}")
+    lines = fetch_catalog_lines()
+    results = []
+
+    if args.format == "lua":
+        output = Path(args.output) if args.output else DEFAULT_LUA_OUTPUT
+        results.append(export_lua(output, lines))
+    elif args.format == "json":
+        output = Path(args.output) if args.output else DEFAULT_JSON_OUTPUT
+        results.append(export_json(output, lines))
+    else:
+        if args.output:
+            raise SystemExit("--output is only valid with --format lua or --format json")
+        results.append(export_lua(DEFAULT_LUA_OUTPUT, lines))
+        results.append(export_json(DEFAULT_JSON_OUTPUT, lines))
+
+    for result in results:
+        if result["format"] == "lua":
+            print(f"Wrote {result['line_count']} lines to {result['output']}")
+            print(f"First line: {result['first_line']}")
+            print(f"Last line: {result['last_line']}")
+        else:
+            print(
+                f"Wrote {result['card_count']} cards and {result['tts_map_count']} tts-map entries "
+                f"to {result['output']}"
+            )
 
 
 if __name__ == "__main__":
