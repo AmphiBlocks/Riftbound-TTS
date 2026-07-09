@@ -152,7 +152,14 @@ python3 riftbound-sheet-docs/piltover_spoilers_to_sheet.py --set UNL --json
 python3 riftbound-sheet-docs/piltover_spoilers_to_sheet.py --set UNL --append-sheet
 python3 riftbound-sheet-docs/piltover_spoilers_to_sheet.py --set UNL --sort-sheet-block
 python3 riftbound-sheet-docs/piltover_spoilers_to_sheet.py --set UNL --set-spawn-defaults
+python3 scripts/export_tts_catalog_from_sheet.py
 ```
+
+Generated Lua export:
+
+- Source tab: `TTS Lua Script (Automatically Generated)`
+- Expected shape: one Lua line per row in column `A`
+- Output file: `scripts/generated_riftbound_card_catalog.lua`
 
 ## Known Failure Mode
 

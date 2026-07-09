@@ -16,12 +16,20 @@ TAB_NAME = "TTS Lua Script (Automatically Generated)"
 DEFAULT_OUTPUT = ROOT / "scripts" / "generated_riftbound_card_catalog.lua"
 
 
+def sanitize_lua_line(line):
+    return (
+        line.replace("•", "*")
+        .replace("\u00a0", " ")
+        .replace("\t", " ")
+    )
+
+
 def fetch_tab_lines(token):
     range_name = urllib.parse.quote(f"'{TAB_NAME}'!A:A", safe="!'")
     url = f"https://sheets.googleapis.com/v4/spreadsheets/{SHEET_ID}/values/{range_name}"
     data = api_json(url, token)
     rows = data.get("values", [])
-    lines = [row[0] for row in rows if row and row[0].strip()]
+    lines = [sanitize_lua_line(row[0]) for row in rows if row and row[0].strip()]
     return lines
 
 
