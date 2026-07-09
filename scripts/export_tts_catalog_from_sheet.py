@@ -17,12 +17,16 @@ from piltover_spoilers_to_sheet import SHEET_ID, api_json, read_sheet_token  # n
 TAB_NAME = "TTS Lua Script (Automatically Generated)"
 DEFAULT_LUA_OUTPUT = ROOT / "scripts" / "generated_riftbound_card_catalog.lua"
 DEFAULT_JSON_OUTPUT = ROOT / "scripts" / "generated_riftbound_card_catalog.json"
+DEFAULT_INDEX_OUTPUT = ROOT / "scripts" / "generated_riftbound_card_catalog_index.json"
+DEFAULT_SHARD_DIR = ROOT / "scripts" / "generated_riftbound_card_catalog_shards"
 
 CARD_ENTRY_RE = re.compile(
     r'^\["(?P<key>[^"]+)"\] = \{name="(?P<name>(?:\\.|[^"])*)", description="(?P<description>(?:\\.|[^"])*)"'
     r'(?:, image = "(?P<image>(?:\\.|[^"])*)")?, gmNotes = \[\[(?P<gm>.*)\]\]\},?$'
 )
 MAP_ENTRY_RE = re.compile(r'^\["(?P<key>[^"]+)"\] = "(?P<value>[^"]+)",?$')
+
+SHARD_NAMES = ("fury", "mind", "body", "chaos", "calm", "order", "colorless", "multicolor")
 
 
 def sanitize_lua_line(line):
@@ -89,6 +93,21 @@ def parse_lua_catalog(lines):
     }
 
 
+def classify_shard(entry):
+    gm = entry.get("gmNotes") or {}
+    color_identity = str(gm.get("color_identity") or "")
+    colors = [part.strip().lower() for part in color_identity.split(",") if part.strip()]
+    colors = [part for part in colors if part in {"fury", "mind", "body", "chaos", "calm", "order"}]
+
+    if gm.get("type") == "battlefield" or gm.get("isSignature") is True or gm.get("isToken") is True:
+        return "multicolor"
+    if not colors:
+        return "colorless"
+    if len(colors) > 1:
+        return "multicolor"
+    return colors[0]
+
+
 def fetch_catalog_lines():
     token = read_sheet_token()
     lines = fetch_tab_lines(token)
@@ -119,6 +138,48 @@ def export_json(output_path, lines):
     }
 
 
+def export_shards(index_output_path, shard_dir, lines):
+    payload = parse_lua_catalog(lines)
+    shard_dir.mkdir(parents=True, exist_ok=True)
+
+    shards = {name: {} for name in SHARD_NAMES}
+    slug_to_shard = {}
+    name_index = []
+
+    for slug, entry in payload["cardData"].items():
+        shard = classify_shard(entry)
+        shards[shard][slug] = entry
+        slug_to_shard[slug] = shard
+        name_index.append({"slug": slug, "name": entry.get("name", "")})
+
+    for shard_name, cards in shards.items():
+        shard_path = shard_dir / f"{shard_name}.json"
+        shard_path.write_text(
+            json.dumps({"cardData": cards}, ensure_ascii=False, separators=(",", ":")) + "\n",
+            encoding="utf-8",
+        )
+
+    index_output_path.write_text(
+        json.dumps(
+            {
+                "slugToShard": slug_to_shard,
+                "tts_to_id_map": payload["tts_to_id_map"],
+                "nameIndex": name_index,
+            },
+            ensure_ascii=False,
+            separators=(",", ":"),
+        ) + "\n",
+        encoding="utf-8",
+    )
+
+    return {
+        "format": "shards",
+        "index_output": index_output_path,
+        "shard_dir": shard_dir,
+        "shard_counts": {name: len(cards) for name, cards in shards.items()},
+    }
+
+
 def main():
     parser = argparse.ArgumentParser(description="Export generated Riftbound card catalog from Sheets.")
     parser.add_argument(
@@ -127,7 +188,7 @@ def main():
     )
     parser.add_argument(
         "--format",
-        choices=("lua", "json", "both"),
+        choices=("lua", "json", "shards", "both"),
         default="lua",
         help="Output format.",
     )
@@ -142,22 +203,31 @@ def main():
     elif args.format == "json":
         output = Path(args.output) if args.output else DEFAULT_JSON_OUTPUT
         results.append(export_json(output, lines))
+    elif args.format == "shards":
+        if args.output:
+            raise SystemExit("--output is only valid with --format lua or --format json")
+        results.append(export_shards(DEFAULT_INDEX_OUTPUT, DEFAULT_SHARD_DIR, lines))
     else:
         if args.output:
             raise SystemExit("--output is only valid with --format lua or --format json")
         results.append(export_lua(DEFAULT_LUA_OUTPUT, lines))
         results.append(export_json(DEFAULT_JSON_OUTPUT, lines))
+        results.append(export_shards(DEFAULT_INDEX_OUTPUT, DEFAULT_SHARD_DIR, lines))
 
     for result in results:
         if result["format"] == "lua":
             print(f"Wrote {result['line_count']} lines to {result['output']}")
             print(f"First line: {result['first_line']}")
             print(f"Last line: {result['last_line']}")
-        else:
+        elif result["format"] == "json":
             print(
                 f"Wrote {result['card_count']} cards and {result['tts_map_count']} tts-map entries "
                 f"to {result['output']}"
             )
+        else:
+            shard_summary = ", ".join(f"{name}={count}" for name, count in sorted(result["shard_counts"].items()))
+            print(f"Wrote shard index to {result['index_output']}")
+            print(f"Wrote shard files to {result['shard_dir']}: {shard_summary}")
 
 
 if __name__ == "__main__":
