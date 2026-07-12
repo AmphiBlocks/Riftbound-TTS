@@ -96,7 +96,13 @@ def fetch_piltover_html(set_code, page=1):
 
 def decode_piltover_html(html):
     chunks = re.findall(r'self\.__next_f\.push\(\[1,"(.*?)"\]\)</script>', html, flags=re.S)
-    return "\n".join(c.encode("utf-8").decode("unicode_escape") for c in chunks)
+    decoded = []
+    for chunk in chunks:
+        try:
+            decoded.append(json.loads(f'"{chunk}"'))
+        except json.JSONDecodeError:
+            decoded.append(chunk.encode("utf-8").decode("unicode_escape"))
+    return "\n".join(decoded)
 
 
 def fetch_piltover_text(set_code):
@@ -397,6 +403,15 @@ def parse_image_url(payload):
     return match.group(1) if match else ""
 
 
+def parse_image_source(image_url):
+    path = urllib.parse.urlparse(image_url).path
+    if "/cards/" in path:
+        return "official"
+    if "/temporary/" in path:
+        return "temporary"
+    return ""
+
+
 def normalize_card_id(card_id):
     return re.sub(r"\*$", "s", card_id)
 
@@ -593,6 +608,7 @@ def extract_cards_from_text(decoded_text, set_code):
                 "equip_might": row["equip_might"],
                 "flavor": row["flavor"],
                 "artist": row["artist"],
+                "image_source": parse_image_source(image_url),
             }
         )
     return rows
@@ -629,7 +645,7 @@ def read_sheet_token():
 
 
 def current_sheet_rows(token):
-    range_name = urllib.parse.quote(f"'{CARD_DATA_SHEET}'!A:X", safe="!'")
+    range_name = urllib.parse.quote(f"'{CARD_DATA_SHEET}'!A:Y", safe="!'")
     url = f"https://sheets.googleapis.com/v4/spreadsheets/{SHEET_ID}/values/{range_name}"
     data = api_json(url, token)
     values = data.get("values", [])
@@ -641,10 +657,40 @@ def current_sheet_rows(token):
 
 
 def current_sheet_values(token):
-    range_name = urllib.parse.quote(f"'{CARD_DATA_SHEET}'!A:X", safe="!'")
+    range_name = urllib.parse.quote(f"'{CARD_DATA_SHEET}'!A:Y", safe="!'")
     url = f"https://sheets.googleapis.com/v4/spreadsheets/{SHEET_ID}/values/{range_name}"
     data = api_json(url, token)
     return data.get("values", [])
+
+
+def ensure_image_tracking_headers(token):
+    values = current_sheet_values(token)
+    headers = values[0] if values else []
+    updates = []
+    if len(headers) < 24 or headers[23] != "image-source":
+        updates.append(
+            {
+                "range": f"'{CARD_DATA_SHEET}'!X1",
+                "majorDimension": "ROWS",
+                "values": [["image-source"]],
+            }
+        )
+    if len(headers) < 25 or headers[24] != "image-url":
+        updates.append(
+            {
+                "range": f"'{CARD_DATA_SHEET}'!Y1",
+                "majorDimension": "ROWS",
+                "values": [["image-url"]],
+            }
+        )
+    if updates:
+        batch_url = f"https://sheets.googleapis.com/v4/spreadsheets/{SHEET_ID}/values:batchUpdate"
+        api_request(
+            batch_url,
+            token,
+            method="POST",
+            payload={"valueInputOption": "RAW", "data": updates},
+        )
 
 
 def card_data_sheet_id(token):
@@ -937,6 +983,7 @@ def delete_duplicate_set_rows(set_code, token):
 
 
 def upsert_rows(rows, token):
+    ensure_image_tracking_headers(token)
     existing_rows = current_sheet_rows(token)
     missing = [row for row in rows if row["card-id"] not in existing_rows]
 
@@ -1019,6 +1066,16 @@ def upsert_rows(rows, token):
                     "majorDimension": "ROWS",
                     "values": [[row["set"]]],
                 },
+                {
+                    "range": f"'{CARD_DATA_SHEET}'!X{row_num}",
+                    "majorDimension": "ROWS",
+                    "values": [[row["image_source"]]],
+                },
+                {
+                    "range": f"'{CARD_DATA_SHEET}'!Y{row_num}",
+                    "majorDimension": "ROWS",
+                    "values": [[row["image_url"]]],
+                },
             ]
         )
     if missing:
@@ -1045,18 +1102,36 @@ def upsert_rows(rows, token):
 def download_images(rows, jpg_dir):
     jpg_dir = Path(jpg_dir)
     jpg_dir.mkdir(parents=True, exist_ok=True)
+    source_meta_path = jpg_dir / ".piltover_image_sources.json"
+    if source_meta_path.exists():
+        try:
+            source_meta = json.loads(source_meta_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            source_meta = {}
+    else:
+        source_meta = {}
     downloaded = []
     skipped = []
     for row in rows:
         card_id = row["card-id"]
         image_url = row.get("image_url", "")
+        image_source = row.get("image_source", "")
         if not image_url:
             skipped.append({"card-id": card_id, "reason": "missing image_url"})
             continue
         out_path = jpg_dir / f"{card_id}.jpg"
+        existing_meta = source_meta.get(card_id, {})
         if out_path.exists():
-            skipped.append({"card-id": card_id, "reason": "exists"})
-            continue
+            if not existing_meta:
+                if image_source == "official":
+                    pass
+                else:
+                    source_meta[card_id] = {"image_url": image_url, "image_source": image_source}
+                    skipped.append({"card-id": card_id, "reason": "exists-seeded", "source": image_url})
+                    continue
+            elif existing_meta.get("image_url") == image_url:
+                skipped.append({"card-id": card_id, "reason": "exists", "source": image_url})
+                continue
         suffix = Path(urllib.parse.urlparse(image_url).path).suffix or ".img"
         with tempfile.NamedTemporaryFile(suffix=suffix, delete=False) as tmp:
             tmp_path = Path(tmp.name)
@@ -1072,6 +1147,7 @@ def download_images(rows, jpg_dir):
                 capture_output=True,
                 text=True,
             )
+            source_meta[card_id] = {"image_url": image_url, "image_source": image_source}
             downloaded.append({"card-id": card_id, "path": str(out_path), "source": image_url})
         except Exception as exc:
             skipped.append({"card-id": card_id, "reason": str(exc), "source": image_url})
@@ -1080,6 +1156,7 @@ def download_images(rows, jpg_dir):
         finally:
             if tmp_path.exists():
                 tmp_path.unlink()
+    source_meta_path.write_text(json.dumps(source_meta, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return {"downloaded": downloaded, "skipped": skipped}
 
 
