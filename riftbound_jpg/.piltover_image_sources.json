@@ -494,5 +494,85 @@
   "VEN-T06": {
     "image_url": "https://cdn.piltoverarchive.com/cards/VEN-T06.webp",
     "image_source": "official"
+  },
+  "VEN-016": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-016.webp",
+    "image_source": "official"
+  },
+  "VEN-044": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-044.webp",
+    "image_source": "official"
+  },
+  "VEN-056": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-056.webp",
+    "image_source": "official"
+  },
+  "VEN-192s": {
+    "image_url": "https://cdn.piltoverarchive.com/temporary/1783617667341-yb02f8e6hpj.png",
+    "image_source": "temporary"
+  },
+  "VEN-022": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-022.webp",
+    "image_source": "official"
+  },
+  "VEN-039": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-039.webp",
+    "image_source": "official"
+  },
+  "VEN-040": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-040.webp",
+    "image_source": "official"
+  },
+  "VEN-092": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-092.webp",
+    "image_source": "official"
+  },
+  "VEN-092a": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-092a.webp",
+    "image_source": "official"
+  },
+  "VEN-096": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-096.webp",
+    "image_source": "official"
+  },
+  "VEN-100": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-100.webp",
+    "image_source": "official"
+  },
+  "VEN-132": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-132.webp",
+    "image_source": "official"
+  },
+  "VEN-148": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-148.webp",
+    "image_source": "official"
+  },
+  "VEN-157": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-157.webp",
+    "image_source": "official"
+  },
+  "VEN-162": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-162.webp",
+    "image_source": "official"
+  },
+  "VEN-183": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-183.webp",
+    "image_source": "official"
+  },
+  "VEN-184": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-184.webp",
+    "image_source": "official"
+  },
+  "VEN-187": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-187.webp",
+    "image_source": "official"
+  },
+  "VEN-188": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-188.webp",
+    "image_source": "official"
+  },
+  "VEN-194": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-194.webp",
+    "image_source": "official"
   }
 }
