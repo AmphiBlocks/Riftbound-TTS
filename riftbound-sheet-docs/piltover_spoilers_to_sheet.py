@@ -114,6 +114,11 @@ def fetch_piltover_new_text():
     return decode_piltover_html(http_get(url, headers={"User-Agent": "Mozilla/5.0"}))
 
 
+def fetch_riftstorm_html(path):
+    url = urllib.parse.urljoin("https://riftstorm.gg/", path.lstrip("/"))
+    return http_get(url, headers={"User-Agent": "Mozilla/5.0"})
+
+
 def group_entries(decoded_text):
     entries = []
     current_key = None
@@ -416,6 +421,10 @@ def normalize_card_id(card_id):
     return re.sub(r"\*$", "s", card_id)
 
 
+def normalize_riftstorm_card_id(public_code):
+    return normalize_card_id(public_code.split("/", 1)[0].strip().upper())
+
+
 def is_supported_card_id(set_code, card_id):
     patterns = {
         "UNL": (
@@ -435,6 +444,101 @@ def is_supported_card_id(set_code, card_id):
         ),
     }
     return any(re.fullmatch(pattern, card_id) for pattern in patterns.get(set_code, ()))
+
+
+def riftstorm_cards_payload(html):
+    pattern = re.compile(
+        r'\{\\\"id\\\":\\\"(?P<id>[^\\\"]+)\\\",'
+        r'\\\"name\\\":\\\"(?P<name>(?:[^\\\"\\\\]|\\\\.)*)\\\",'
+        r'\\\"publicCode\\\":\\\"(?P<public_code>(?:[^\\\"\\\\]|\\\\.)*)\\\",'
+        r'\\\"collectorNumber\\\":(?P<collector_number>\d+),'
+        r'\\\"imageUrl\\\":\\\"(?P<image_url>(?:[^\\\"\\\\]|\\\\.)*)\\\",'
+        r'\\\"domain\\\":\\\"(?P<domain>(?:[^\\\"\\\\]|\\\\.)*)\\\",'
+        r'\\\"alt\\\":\\\"(?P<alt>.*?)\\\",'
+        r'\\\"isChampion\\\":(?P<is_champion>true|false),'
+        r'\\\"printLabel\\\":(?P<print_label>null|\\\"(?:[^\\\"\\\\]|\\\\.)*\\\")',
+        flags=re.S,
+    )
+    rows = []
+    for match in pattern.finditer(html):
+        row = match.groupdict()
+        for key in ("id", "name", "public_code", "image_url", "domain", "alt"):
+            row[key] = json.loads(f'"{row[key]}"')
+        print_label = row["print_label"]
+        row["print_label"] = (
+            None if print_label == "null" else json.loads(f'"{print_label[2:-2]}"')
+        )
+        row["collector_number"] = int(row["collector_number"])
+        row["is_champion"] = row["is_champion"] == "true"
+        rows.append(row)
+    return rows
+
+
+def parse_riftstorm_tts_type(raw_type, is_champion):
+    if is_champion:
+        return "Champion"
+    return {
+        "Battlefield": "Battlefield",
+        "Gear": "Gear",
+        "Legend": "Legend",
+        "Rune": "Rune",
+        "Spell": "Spell",
+        "Unit": "Unit",
+        "Unit-Gear": "Unit",
+    }.get(raw_type, "")
+
+
+def extract_riftstorm_effect(alt_text, card_name):
+    match = re.match(
+        rf"^Riftbound ([A-Za-z-]+): {re.escape(card_name)}\. ?(.*)$",
+        alt_text,
+        flags=re.S,
+    )
+    if not match:
+        return "", ""
+    return match.group(1), clean_effect(match.group(2))
+
+
+def extract_riftstorm_cards(set_code):
+    if set_code != "VEN":
+        return []
+    rows = []
+    for card in riftstorm_cards_payload(fetch_riftstorm_html("/vendetta")):
+        card_id = normalize_riftstorm_card_id(card.get("public_code", ""))
+        if not card_id or not is_supported_card_id(set_code, card_id):
+            continue
+        card_name = card["name"].strip()
+        raw_type, effect = extract_riftstorm_effect(card["alt"], card_name)
+        rows.append(
+            {
+                "card-id": card_id,
+                "card_name": card_name,
+                "effect": effect,
+                "set": set_code_to_set_name(set_code),
+                "image_url": card["image_url"].strip(),
+                "tts-type": parse_riftstorm_tts_type(raw_type, card["is_champion"]),
+                "rarity": "Unknown",
+                "domain": card["domain"].strip(),
+                "might": "",
+                "cost": "",
+                "power": "",
+                "equip_might": "",
+                "flavor": "",
+                "artist": "",
+                "image_source": "official",
+            }
+        )
+    return rows
+
+
+def merge_card_rows(primary, secondary):
+    merged = dict(primary)
+    for key, value in secondary.items():
+        if key == "card-id":
+            continue
+        if value not in ("", None):
+            merged[key] = value
+    return merged
 
 
 def parse_tts_type(payload):
@@ -566,13 +670,20 @@ def extract_cards_from_text(decoded_text, set_code):
     entry_map = {key: payload for key, payload in entries}
     set_name = set_code_to_set_name(set_code)
     fallback_ids = FALLBACK_CARD_IDS.get(set_code, {})
-    card_payloads = [(idx, payload) for idx, (_, payload) in enumerate(entries) if 'text-xl md:text-2xl pr-8' in payload]
+    card_payloads = [
+        (idx, payload)
+        for idx, (_, payload) in enumerate(entries)
+        if 'text-xl md:text-2xl pr-8' in payload or 'pr-8 text-xl md:text-2xl' in payload
+    ]
 
     rows = []
     for idx, payload in card_payloads:
         row = enrich_row(entries, entry_map, payload, idx)
         info_payload = row["info_payload"]
-        name_match = re.search(r'"className":"text-xl md:text-2xl pr-8","children":"([^"]+)"', payload)
+        name_match = re.search(
+            r'"className":"(?:text-xl md:text-2xl pr-8|pr-8 text-xl md:text-2xl)","children":"([^"]+)"',
+            payload,
+        )
         card_name = name_match.group(1) if name_match else ""
         fallback_card_id = fallback_ids.get(card_name, "")
         if info_payload and f'"children":"{set_name}"' not in info_payload and not fallback_card_id:
@@ -622,9 +733,11 @@ def extract_cards(set_code):
         decoded_text = decode_piltover_html(fetch_piltover_html(set_code, page=page))
         rows.extend(extract_cards_from_text(decoded_text, set_code))
     rows.extend(extract_cards_from_text(fetch_piltover_new_text(), set_code))
+    rows.extend(extract_riftstorm_cards(set_code))
     deduped = {}
     for row in rows:
-        deduped[row["card-id"]] = row
+        existing = deduped.get(row["card-id"])
+        deduped[row["card-id"]] = row if existing is None else merge_card_rows(existing, row)
     return [deduped[key] for key in sorted(deduped)]
 
 
@@ -903,22 +1016,29 @@ def set_spawn_defaults(set_code, token):
             "UNL-230s": "Sprite",
             "UNL-233": "Brush",
             "UNL-233s": "Brush",
-        }
+        },
+        "VEN": {
+            "VEN-T01": "Empower",
+        },
     }
     desired = defaults.get(set_code, {})
-    if not desired:
-        return {"updated": []}
 
     values = current_sheet_values(token)
     updates = []
     updated = []
     for row_num, row in enumerate(values[1:], start=2):
         card_id = row[1].strip() if len(row) > 1 else ""
-        if card_id not in desired:
-            continue
-        spawn = desired[card_id]
         current_spawn = row[15] if len(row) > 15 else ""
+        effect = row[6] if len(row) > 6 else ""
+
+        spawn = desired.get(card_id, "")
+        if not spawn and set_code == "VEN" and "empower" in effect.lower() and not current_spawn:
+            spawn = "Empower"
+        if not spawn:
+            continue
         if current_spawn == spawn:
+            continue
+        if current_spawn and current_spawn != spawn:
             continue
         updates.append(
             {
