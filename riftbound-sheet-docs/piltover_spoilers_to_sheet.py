@@ -536,8 +536,16 @@ def merge_card_rows(primary, secondary):
     for key, value in secondary.items():
         if key == "card-id":
             continue
-        if value not in ("", None):
+        if value in ("", None):
+            continue
+        existing = merged.get(key)
+        if existing in ("", None):
             merged[key] = value
+            continue
+        # Keep concrete upstream values when the fallback only has placeholders.
+        if key == "rarity" and value == "Unknown" and existing != "Unknown":
+            continue
+        merged[key] = value
     return merged
 
 
@@ -774,6 +782,28 @@ def current_sheet_values(token):
     url = f"https://sheets.googleapis.com/v4/spreadsheets/{SHEET_ID}/values/{range_name}"
     data = api_json(url, token)
     return data.get("values", [])
+
+
+def read_sheet_range(range_a1, token):
+    range_name = urllib.parse.quote(range_a1, safe="!'")
+    url = f"https://sheets.googleapis.com/v4/spreadsheets/{SHEET_ID}/values/{range_name}"
+    data = api_json(url, token)
+    return data.get("values", [])
+
+
+def write_sheet_range(range_a1, values, token, value_input_option="USER_ENTERED"):
+    payload = {
+        "valueInputOption": value_input_option,
+        "data": [
+            {
+                "range": range_a1,
+                "majorDimension": "ROWS",
+                "values": values,
+            }
+        ],
+    }
+    batch_url = f"https://sheets.googleapis.com/v4/spreadsheets/{SHEET_ID}/values:batchUpdate"
+    return api_request(batch_url, token, method="POST", payload=payload)
 
 
 def ensure_image_tracking_headers(token):
@@ -1291,14 +1321,34 @@ def main():
     parser.add_argument("--clear-shifted-columns", action="store_true")
     parser.add_argument("--set-spawn-defaults", action="store_true")
     parser.add_argument("--download-jpg-dir", default="")
+    parser.add_argument("--read-range", default="")
+    parser.add_argument("--write-range", default="")
+    parser.add_argument("--write-value", default="")
+    parser.add_argument("--write-value-file", default="")
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args()
+
+    if args.read_range:
+        token = read_sheet_token()
+        result = read_sheet_range(args.read_range, token)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        return
+
+    if args.write_range:
+        token = read_sheet_token()
+        value = args.write_value
+        if args.write_value_file:
+            value = Path(args.write_value_file).read_text(encoding="utf-8")
+        result = write_sheet_range(args.write_range, [[value]], token)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        return
 
     rows = extract_cards(args.set)
     if args.download_jpg_dir:
         result = download_images(rows, args.download_jpg_dir)
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return
+
     if args.append_sheet:
         token = read_sheet_token()
         result = upsert_rows(rows, token)
