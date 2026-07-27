@@ -1249,9 +1249,10 @@ def upsert_rows(rows, token):
     }
 
 
-def download_images(rows, jpg_dir):
+def download_images(rows, jpg_dir, force_card_ids=None):
     jpg_dir = Path(jpg_dir)
     jpg_dir.mkdir(parents=True, exist_ok=True)
+    force_card_ids = set(force_card_ids or [])
     source_meta_path = jpg_dir / ".piltover_image_sources.json"
     if source_meta_path.exists():
         try:
@@ -1271,7 +1272,8 @@ def download_images(rows, jpg_dir):
             continue
         out_path = jpg_dir / f"{card_id}.jpg"
         existing_meta = source_meta.get(card_id, {})
-        if out_path.exists():
+        force = card_id in force_card_ids
+        if out_path.exists() and not force:
             if not existing_meta:
                 if image_source == "official":
                     pass
@@ -1321,6 +1323,7 @@ def main():
     parser.add_argument("--clear-shifted-columns", action="store_true")
     parser.add_argument("--set-spawn-defaults", action="store_true")
     parser.add_argument("--download-jpg-dir", default="")
+    parser.add_argument("--download-card-id", action="append", default=[])
     parser.add_argument("--read-range", default="")
     parser.add_argument("--write-range", default="")
     parser.add_argument("--write-value", default="")
@@ -1345,7 +1348,10 @@ def main():
 
     rows = extract_cards(args.set)
     if args.download_jpg_dir:
-        result = download_images(rows, args.download_jpg_dir)
+        if args.download_card_id:
+            wanted = set(args.download_card_id)
+            rows = [row for row in rows if row["card-id"] in wanted]
+        result = download_images(rows, args.download_jpg_dir, force_card_ids=args.download_card_id)
         print(json.dumps(result, indent=2, ensure_ascii=False))
         return
 

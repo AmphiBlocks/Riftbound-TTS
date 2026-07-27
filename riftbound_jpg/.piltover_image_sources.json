@@ -878,5 +878,9 @@
   "VEN-166": {
     "image_url": "https://cdn.piltoverarchive.com/cards/VEN-166.webp",
     "image_source": "official"
+  },
+  "UNL-234s": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/UNL-234*.webp",
+    "image_source": "official"
   }
 }
