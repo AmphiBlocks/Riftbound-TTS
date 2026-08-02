@@ -32,6 +32,19 @@ FALLBACK_CARD_IDS = {
     }
 }
 
+CARD_OVERRIDES = {
+    "VEN-188": {"card_name": "Mel, Defiant Soul", "tts-type": "Legend"},
+    "VEN-189": {"card_name": "Akali, Rogue Assassin", "tts-type": "Legend"},
+    "VEN-190": {"card_name": "Renekton, Butcher of the Sands", "tts-type": "Legend"},
+    "VEN-191": {"card_name": "Zed, Master of Shadows", "tts-type": "Legend"},
+    "VEN-192": {"card_name": "Nasus, Curator of the Sands", "tts-type": "Legend"},
+    "VEN-193": {"card_name": "Shen, Eye of Twilight", "tts-type": "Legend"},
+    "VEN-194": {"card_name": "Jayce, Defender of Tomorrow", "tts-type": "Legend"},
+    "VEN-195": {"card_name": "Mel, Soul's Reflection", "tts-type": "Legend"},
+    "VEN-196": {"card_name": "Ambessa, Matriarch of War", "tts-type": "Legend"},
+    "VEN-197": {"card_name": "Kennen, Heart of the Tempest", "tts-type": "Legend"},
+}
+
 
 def http_get(url, headers=None):
     req = urllib.request.Request(url, headers=headers or {})
@@ -542,10 +555,22 @@ def merge_card_rows(primary, secondary):
         if existing in ("", None):
             merged[key] = value
             continue
+        # Keep canonical identity from the primary source once present.
+        if key in {"card_name", "tts-type"}:
+            continue
         # Keep concrete upstream values when the fallback only has placeholders.
         if key == "rarity" and value == "Unknown" and existing != "Unknown":
             continue
         merged[key] = value
+    return merged
+
+
+def apply_card_overrides(row):
+    overrides = CARD_OVERRIDES.get(row["card-id"])
+    if not overrides:
+        return row
+    merged = dict(row)
+    merged.update(overrides)
     return merged
 
 
@@ -746,7 +771,7 @@ def extract_cards(set_code):
     for row in rows:
         existing = deduped.get(row["card-id"])
         deduped[row["card-id"]] = row if existing is None else merge_card_rows(existing, row)
-    return [deduped[key] for key in sorted(deduped)]
+    return [apply_card_overrides(deduped[key]) for key in sorted(deduped)]
 
 
 def set_code_to_set_name(set_code):
@@ -1060,10 +1085,16 @@ def set_spawn_defaults(set_code, token):
         card_id = row[1].strip() if len(row) > 1 else ""
         current_spawn = row[15] if len(row) > 15 else ""
         effect = row[6] if len(row) > 6 else ""
+        effect_lower = effect.lower()
 
         spawn = desired.get(card_id, "")
-        if not spawn and set_code == "VEN" and "empower" in effect.lower() and not current_spawn:
-            spawn = "Empower"
+        if not spawn and set_code == "VEN":
+            if "shadow clone unit token" in effect_lower:
+                spawn = "Shadow Clone"
+            elif "tentacle unit token" in effect_lower or "tentacle unit tokens" in effect_lower:
+                spawn = "Tentacle"
+            elif "empower" in effect_lower and not current_spawn:
+                spawn = "Empower"
         if not spawn:
             continue
         if current_spawn == spawn:
