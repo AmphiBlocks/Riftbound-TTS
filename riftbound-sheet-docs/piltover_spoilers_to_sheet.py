@@ -569,7 +569,7 @@ def parse_tts_type(payload):
     if keyed_type in {"Legend", "Unit", "Spell", "Gear", "Rune", "Battlefield"}:
         return keyed_type
     text_fallbacks = [
-        ("Token Card", "Rune"),
+        ("Token Card", "Token"),
         ("Unit Gear", "Unit"),
         ("Token Unit", "Unit"),
         ("Token Rune", "Rune"),
