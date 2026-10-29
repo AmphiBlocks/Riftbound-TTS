@@ -1762,5 +1762,49 @@
   "RAD-R06": {
     "image_url": "https://riftbound.org/storage/cards/rad/rad-r06.webp?v=1791591669",
     "image_source": "official"
+  },
+  "VEN-SP1": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-SP1.webp",
+    "image_source": "official"
+  },
+  "VEN-SP2": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-SP2.webp",
+    "image_source": "official"
+  },
+  "VEN-SP3": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-SP3.webp",
+    "image_source": "official"
+  },
+  "VEN-SP4": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-SP4.webp",
+    "image_source": "official"
+  },
+  "VEN-SP5": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-SP5.webp",
+    "image_source": "official"
+  },
+  "VEN-SP6": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/VEN-SP6.webp",
+    "image_source": "official"
+  },
+  "RAD-SP1": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/RAD-SP1.webp",
+    "image_source": "official"
+  },
+  "RAD-SP2": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/RAD-SP2.webp",
+    "image_source": "official"
+  },
+  "RAD-SP3": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/RAD-SP3.webp",
+    "image_source": "official"
+  },
+  "RAD-SP4": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/RAD-SP4.webp",
+    "image_source": "official"
+  },
+  "RAD-SP5": {
+    "image_url": "https://cdn.piltoverarchive.com/cards/RAD-SP5.webp",
+    "image_source": "official"
   }
 }

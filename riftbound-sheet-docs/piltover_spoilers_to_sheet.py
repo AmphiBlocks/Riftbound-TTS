@@ -459,11 +459,13 @@ def is_supported_card_id(set_code, card_id):
             rf"{set_code}-\d{{3}}(?:a|s|as)?",
             rf"{set_code}-R\d{{2}}a?",
             rf"{set_code}-T\d{{2}}",
+            rf"{set_code}-SP\d+",
         ),
         "VEN": (
             rf"{set_code}-\d{{3}}(?:a|s)?",
             rf"{set_code}-R\d{{2}}a",
             rf"{set_code}-T\d{{2}}",
+            rf"{set_code}-SP\d+",
         ),
     }
     return any(re.fullmatch(pattern, card_id) for pattern in patterns.get(set_code, ()))
